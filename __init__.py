@@ -77,11 +77,11 @@ def enregistrer_client():
     conn.close()
     return redirect('/consultation/')  # Rediriger vers la page d'accueil après l'enregistrement
 
-@app.route('/fiche_mon/<string:name>')
-def Readfiche(post_id):
+@app.route('/fiche_nom/<string:nom>')
+def Readfiche():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clients WHERE name = ?', (post_id,))
+    cursor.execute('SELECT * FROM clients WHERE nom = ?')
     data = cursor.fetchall()
     conn.close()
     # Rendre le template HTML et transmettre les données
