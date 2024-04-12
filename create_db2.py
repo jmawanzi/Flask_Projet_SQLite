@@ -1,6 +1,6 @@
 import sqlite3
 
-with open('schema.sql') as f:
+with open('schema2.sql') as f:
     connection.executescript(f.read())
 
     # Création d'un curseur pour exécuter des requêtes SQL
