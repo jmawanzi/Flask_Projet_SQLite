@@ -87,17 +87,29 @@ def Readfiche2(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/fiche_nom/', methods=['GET', 'POST'])
-def authentificationuser():
+@app.route('/fiche_nom')
+def user():
+    if not est_authentifie():
+        # Rediriger vers la page d'authentification si l'utilisateur n'est pas authentifié
+        return redirect(url_for('authentification'))
+
+  # Si l'utilisateur est authentifié
+    return render_template('read_data.html', data=data)
+
+@app.route('/authentification', methods=['GET', 'POST'])
+def authentificationsec():
     if request.method == 'POST':
         # Vérifier les identifiants
         if request.form['username'] == 'user' and request.form['password'] == '12345': # password à cacher par la suite
             session['authentifie'] = True
             # Rediriger vers la route lecture après une authentification réussie
-            return redirect(url_for('/fiche_nom/<string:post_id>'))
+            return redirect(url_for('/fiche_nom'))
         else:
             # Afficher un message d'erreur si les identifiants sont incorrects
             return render_template('formulaire_authentification.html', error=True)
+
+    return render_template('formulaire_authentification.html', error=False)
+    
 
 if __name__ == "__main__":
   app.run(debug=True)
