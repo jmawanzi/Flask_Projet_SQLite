@@ -87,22 +87,6 @@ def Readfiche2(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/authentification')
-def user():
-    url = 'https://mawanzi4.alwaysdata.net/fiche_nom/'
-    username = 'user'
-    password = '12345'
-    session = requests.Session()
-    session.auth = (username, password)
-
-    try:
-        response = session.get(url)
-        print("Code de réponse :", response.status_code)
-        print("Réponse :", response.text)
-
-    except requests.exceptions.RequestException as e:
-        print("Une erreur s'est produite :", e)
-
 @app.route('/livres/')
 def ReadBDD2():
     conn = sqlite3.connect('database2.db')
