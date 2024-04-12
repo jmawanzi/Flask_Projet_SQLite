@@ -1,8 +1,7 @@
 import sqlite3
 
-def create_database():
-    # Connexion à la base de données (si la base de données n'existe pas, elle sera créée)
-    connection = sqlite3.connect('bibliotheque.db')
+with open('schema.sql') as f:
+    connection.executescript(f.read())
 
     # Création d'un curseur pour exécuter des requêtes SQL
     cursor = connection.cursor()
