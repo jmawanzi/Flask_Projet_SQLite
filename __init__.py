@@ -96,7 +96,7 @@ def user():
   # Si l'utilisateur est authentifié
     return render_template('read_data.html', data=data)
 
-@app.route('/authentification', methods=['GET', 'POST'])
+@app.route('/authentificationsec', methods=['GET', 'POST'])
 def authentificationsec():
     if request.method == 'POST':
         # Vérifier les identifiants
