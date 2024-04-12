@@ -7,14 +7,10 @@ def create_database():
     # Création d'un curseur pour exécuter des requêtes SQL
     cursor = conn.cursor()
 
-    # Création de la table des Livres
-    cursor.execute("CREATE TABLE IF NOT EXISTS Livres (livre_id INTEGER PRIMARY KEY, titre TEXT NOT NULL, auteur TEXT, genre TEXT, stock INTEGER)")
-
-    # Création de la table des Utilisateurs
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Utilisateurs (utilisateur_id INTEGER PRIMARY KEY, nom TEXT NOT NULL, prenom TEXT NOT NULL, email TEXT UNIQUE NOT NULL, role TEXT NOT NULL)''')
-
-    # Création de la table des Emprunts
-    cursor.execute('''CREATE TABLE IF NOT EXISTS Emprunts (emprunt_id INTEGER PRIMARY KEY, utilisateur_id INTEGER, livre_id INTEGER, date_emprunt DATE, date_retour_prevue DATE, date_retour_effective DATE, FOREIGN KEY (utilisateur_id) REFERENCES Utilisateurs(utilisateur_id), FOREIGN KEY (livre_id) REFERENCES Livres(livre_id))''')
+cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(1, 'Emilie', 'Victor', 2024, 10))
+cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(2, 'Didier', 'Laurent', 2023, 5))
+cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(3, 'Georges', 'Hugo', 2020, 3))
+cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(2, 'Lars', 'Sullivan', 2021, 6))
 
     # Commit des changements et fermeture de la connexion
     conn.commit()
