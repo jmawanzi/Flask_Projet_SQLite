@@ -87,7 +87,7 @@ def Readfiche2(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/fiche_nom/authentification', methods=['GET', 'POST'])
+@app.route('/fiche_nom', methods=['GET', 'POST'])
 def authentificationuser():
     if request.method == 'POST':
         # Vérifier les identifiants
