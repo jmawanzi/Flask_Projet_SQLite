@@ -1,48 +1,26 @@
--- Création de la table des Livres
 CREATE TABLE Livres (
-    livre_id INT PRIMARY KEY AUTO_INCREMENT,
-    titre VARCHAR(255) NOT NULL,
-    auteur_id INT,
-    genre_id INT,
-    stock INT,
-    FOREIGN KEY (auteur_id) REFERENCES Auteurs(auteur_id),
-    FOREIGN KEY (genre_id) REFERENCES Genres(genre_id)
+    ID_livre INT PRIMARY KEY,
+    Titre VARCHAR(255),
+    Auteur VARCHAR(255),
+    Annee_publication INT,
+    Quantite INT
 );
 
--- Création de la table des Utilisateurs
 CREATE TABLE Utilisateurs (
-    utilisateur_id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(100) NOT NULL,
-    prenom VARCHAR(100) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    role ENUM('lecteur', 'bibliothecaire', 'administrateur') NOT NULL
+    ID_utilisateur INT PRIMARY KEY,
+    Nom VARCHAR(255),
+    Prenom VARCHAR(255),
+    Email VARCHAR(255),
+    Date_inscription TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Création de la table des Emprunts
 CREATE TABLE Emprunts (
-    emprunt_id INT PRIMARY KEY AUTO_INCREMENT,
-    utilisateur_id INT,
-    livre_id INT,
-    date_emprunt DATE,
-    date_retour_prevue DATE,
-    date_retour_effective DATE,
-    FOREIGN KEY (utilisateur_id) REFERENCES Utilisateurs(utilisateur_id),
-    FOREIGN KEY (livre_id) REFERENCES Livres(livre_id)
+    ID_emprunt INT PRIMARY KEY,
+    ID_utilisateur INT,
+    ID_livre INT,
+    Date_emprunt DATE,
+    Date_retour_prevue DATE,
+    Date_retour_effective DATE,
+    FOREIGN KEY (ID_utilisateur) REFERENCES Utilisateurs(ID_utilisateur),
+    FOREIGN KEY (ID_livre) REFERENCES Livres(ID_livre)
 );
-
--- Création de la table des Auteurs
-CREATE TABLE Auteurs (
-    auteur_id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(100) NOT NULL,
-    prenom VARCHAR(100)
-);
-
--- Création de la table des Genres
-CREATE TABLE Genres (
-    genre_id INT PRIMARY KEY AUTO_INCREMENT,
-    nom VARCHAR(100) NOT NULL
-);
-
--- Exemple d'insertion de données
-INSERT INTO Auteurs (nom, prenom) VALUES ('Rowling', 'J.K.');
-INSERT INTO Genres (nom) VALUES ('Fantasy');
