@@ -12,9 +12,8 @@ cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Qua
 cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(3, 'Georges', 'Hugo', 2020, 3))
 cur.execute("INSERT INTO Livres (ID_livre, Titre, Auteur, Annee_publication, Quantite) VALUES (?, ?, ?, ?, ?)",(2, 'Lars', 'Sullivan', 2021, 6))
 
-
-    connection.commit()
-    connection.close()
+connection.commit()
+connection.close()
 
 if __name__ == "__main__":
     create_database()
