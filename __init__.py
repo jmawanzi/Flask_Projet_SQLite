@@ -87,7 +87,7 @@ def Readfiche2(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/fiche_nom')
+@app.route('/authentification')
 def user():
     url = 'https://mawanzi4.alwaysdata.net/fiche_nom/'
     username = 'user'
